@@ -1,5 +1,5 @@
 {
-  "name": "content-creators",
+  "name": "rock-paper-scissors-99",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -8,7 +8,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "chai": "^4.1.1",
+    "chai": "^4.3.6",
     "mocha": "^6.1.3"
   }
 }

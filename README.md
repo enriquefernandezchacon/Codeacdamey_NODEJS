@@ -1,35 +1,59 @@
-# Content Creators Contracting
+# Rock Paper Scissors x99
 
 ## Project Overview
 
-In this project, you have been hired by a "professional" company, Content Creators Contracting, to write a function
-that signs their HTTP requests with the proper content types. Normally this behavior is handled
-by the browser, but they really mucked things up in thinking they could solve this problem better. Now none of their files are loading properly.
+In this project, you will build all of the logic needed for a more intense version of
+Rock Paper Scissors (RPS). Rather than selecting just one of Rock, Paper, or Scissors - each player
+will select three moves. Each move will consist of a type (Rock, Paper, or Scissors) as well
+as a strength value. Each player will have 99 total points to use as strength between all
+three of their moves. For example, an example set of moves might be:
 
-They have managed to craft the code to get the file extension from a string containing a filename and store it in a variable called 'extension': `const extension = filename.match(/.*\.([^\.]*)$/)[1];`. In this code, if `filename` were equal to 'index.html', the string 'html' would be stored in `extension`. However, they're struggling to write the rest of the function.
+- Move 1: Rock - 30 Strength Points
+- Move 2: Rock - 60 Strength Points
+- Move 3: Paper - 9 Strength Points
 
-It's up to you to save their site and their business.
+The strength for each move must be at least 1.
 
-You can view what the final version of this project should look like <a href="https://s3.amazonaws.com/codecademy-content/programs/build-apis/projects/build-apis-project-0-content-creators/index.html" target="_blank">here</a>.
+After each player's moves are chosen, they will compare moves in the order they were selected. If two moves have different types (for example, Rock vs Scissors), then normal RPS rules will apply (in this case, Rock beats Scissors).
+However, if two types are the same, then the move with more strength will win. If both strength values are
+equal, then a tie is declared.
 
-The goal of this project is to get you running a testing suite and implementing the functionality laid out in the testing suite.
+The player that wins the majority of the three rounds will be the winner of the game.
+
+To demo all of this functionality, try out a final version of this project, located <a href="https://s3.amazonaws.com/codecademy-content/programs/build-apis/projects/build-apis-project-1-rock-paper-scissors-x99/project/index.html" target="_blank">here</a>.
 
 ## How To Begin
 
-To start, download the starting code for this project <a href="https://s3.amazonaws.com/codecademy-content/PRO/skill-paths/backend-javascript/projects/content-creators/project-0-content-creators-start.zip" target="_blank">here</a>. After downloading the zip folder, double click it to uncompress it and access the contents of this project.
+To start, download the starting code for this project <a href="https://s3.amazonaws.com/codecademy-content/PRO/skill-paths/backend-javascript/projects/rock-paper-scissors-x99/project-1-rock-paper-scissors-x99-start.zip" target="_blank">here</a>. To do this, you may either use the git command line tool
+(if you are comfortable with it) or click the green button labeled "Clone or download" at the top right of this page and select "Download zip". After downloading the zip folder, double click it to uncompress it and access the contents of this project.
 
 ## Implementation Details
 
+All of your code should be written in the file at the following path: **js/game-logic.js**. Use the descriptions and testing suite discussed below to guide implementation of all necessary functionality.
+
 To complete this project, your code will need to contain the following:
 
-* A function called `getContentType`, which will take a string representing a filename and return the proper content-type extension. You will need to implement the functionality for determining content types for `'text/html'`, `'text/css'`, `'image/jpeg'`, and `'text/plain'`. For more information on this functionality, run the testing suite (detailed below).
+* Twelve global variables representing each player's move types and values (3 move types and 3 move values for each player). These variable names should be in the form of `playerOneMoveOneType`, `playerOneMoveOneValue`, etc.
 
-All of your code should be written in **js/request-logic.js**.  Use the descriptions above and the testing suite (discussed below) to guide implementation of all necessary functionality.
+* A function called `setPlayerMoves`, which will take a string representing a player (in the form of `'Player One'` or `'Player Two'`), three move types, and three move values, and set the correct global move variables. The method signature for this function should be as follows: `setPlayerMoves(player, moveOneType, moveOneValue, moveTwoType, moveTwoValue, moveThreeType, moveThreeValue)`.
 
-To demo the site, open **index.html** in your browser (by double clicking **index.html** in a file browser or dragging it into your Internet browser). You will be writing
-JavaScript code that uses new syntax (you will learn more about this later in the intensive),
+* A function called `getRoundWinner`, which takes a round number (`1`, `2`, or `3`), compares both player's move types and values for that round, and returns the appropriate winner (`'Player One'`, `'Player Two'`, or `'Tie'`)
+
+* A function called `getGameWinner`, which compares both player's move
+types and values for the whole game and returns the appropriate winner (`'Player One'`, `'Player Two'`, or `'Tie'`)
+
+* Bonus: A function called `setComputerMoves`, which chooses three random moves for player two. The move type for each move should be completely random, and the move values should be random but add up to 99.
+
+
+To demo your version of the game, open **index.html** in your browser (by double clicking **index.html** in a file browser or dragging it into your Internet browser). You will be writing
+JavaScript code that uses new syntax (you will learn more about this later),
 so you will need to use the most up-to-date version of Chrome to ensure your code runs correctly. If your
 version of Chrome is too old, correctly-written code may still not run as expected.
+
+*Disclaimer*: If you have prior JavaScript or programming experience, you might be able to come up with an implementation that uses language features or best practices that we haven't yet covered in Build Web APIs From Scratch. The implementation details and the tests for this project require a specific implementation based upon the material covered so far: JS types, variables, functions, and scope, but not topics that will be covered in later units.
+
+As the projects in the Intensive continue, the project specifications and tests will become less granular, allowing you to implement the required functionality on your own.
+
 
 ## Testing
 
@@ -43,6 +67,6 @@ about whether or not each test passed. After this list, you will see more specif
 about why each failing test failed.
 
 As you implement functionality, run the tests to
-ensure you are creating the correctly named function and that it returns the proper values.
+ensure you are creating correctly named variables and functions that return the proper values.
 The tests will additionally help you identify edge cases that you may not have anticipated
-when first writing the function.
+when first writing the functions.
